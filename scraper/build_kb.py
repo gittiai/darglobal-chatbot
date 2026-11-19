@@ -5,7 +5,7 @@ from pathlib import Path
 import trafilatura
 
 RAW, OUT = Path("raw"), Path("data/kb.jsonl")
-docs = [json.loads(l) for f in ["data/public.jsonl", "data/wasalt.jsonl"] if Path(f).exists() for l in open(f)]
+docs = [json.loads(l) for f in ["data/facts.jsonl", "data/public.jsonl", "data/wasalt.jsonl"] if Path(f).exists() for l in open(f)]
 
 # Pages saved manually from a browser (raw/manual/*.html)
 for p in sorted((RAW / "manual").glob("**/*.htm*")):
