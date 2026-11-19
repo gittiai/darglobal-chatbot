@@ -28,10 +28,13 @@ Rules:
 - If figures conflict between sources, give the most recent and mention the difference.
 - Reply in the user's language (English or Arabic)."""
 
+PROFILES = [c for c in CHUNKS if c["title"].endswith("company profile")]  # always in context
+
 def retrieve(q: str, k: int = 5):
     scores = BM25.get_scores(tok(q))
-    idx = sorted(range(len(CHUNKS)), key=lambda i: -scores[i])[:k]
-    return [CHUNKS[i] for i in idx if scores[i] > 0]
+    idx = sorted(range(len(CHUNKS)), key=lambda i: -scores[i])[:k + len(PROFILES)]
+    hits = [CHUNKS[i] for i in idx if scores[i] > 0 and CHUNKS[i] not in PROFILES][:k]
+    return PROFILES + hits
 
 class Msg(BaseModel):
     role: str
