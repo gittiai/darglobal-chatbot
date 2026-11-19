@@ -1,0 +1,5 @@
+.venv
+raw
+.env
+__pycache__
+data/wasalt.jsonl

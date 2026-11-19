@@ -1,0 +1,26 @@
+[project]
+name = "darglobal-chatbot"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Aditya Shivhare", email = "aditya@heyaway.ai" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "fastapi>=0.165.0",
+    "httpx>=0.28.1",
+    "playwright>=1.65.2",
+    "python-dotenv>=1.2.4",
+    "rank-bm25>=0.2.2",
+    "trafilatura>=2.3.1",
+    "uvicorn>=0.54.0",
+]
+
+[project.scripts]
+darglobal-chatbot = "darglobal_chatbot:main"
+
+[build-system]
+requires = ["uv_build>=0.13.6,<0.14.0"]
+build-backend = "uv_build"
